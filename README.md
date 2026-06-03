@@ -1,6 +1,6 @@
 # NHAI Face Auth — Offline Facial Recognition & Liveness Detection
 
-> **NHAI Hackathon 7.0** — Submission by Team [Your Team Name]
+> **NHAI Hackathon 7.0** — Submission by Tejas Singh Bhati
 
 A fully **offline**, **lightweight** face authentication system built in React Native for Android and iOS. Designed for NHAI field personnel attendance tracking in zero-network zones.
 
@@ -161,7 +161,7 @@ Device (SQLite) ──[WiFi/4G restored]──▶ AWS DynamoDB
 - Node.js 18+
 - Android Studio (for Android builds)
 - Xcode 14+ (for iOS builds)
-- JDK 17
+- JDK 21 (Microsoft OpenJDK 21 recommended)
 
 ### Installation
 
@@ -175,8 +175,11 @@ npm install
 # 3. Download TFLite models (~16 MB)
 npm run model:download
 
-# 4. Android build
-cd android && ./gradlew assembleDebug
+# 4. Android build (Windows)
+cd android && .\gradlew assembleDebug
+
+# 4. Android build (macOS/Linux)
+# cd android && ./gradlew assembleDebug
 
 # 5. iOS build (macOS only)
 cd ios && pod install && cd ..
@@ -286,7 +289,7 @@ All measurements are **on-device CPU** (no GPU, no internet).
 
 ## 👥 Team
 
-- Built for NHAI Hackathon 7.0
-- Submission: 22 May 2026 – 05 June 2026
-#   f a c e - a u t h  
- 
+- **Developer**: Tejas Singh Bhati
+- **Hackathon**: NHAI Hackathon 7.0
+- **Submission window**: 22 May 2026 - 05 June 2026
+- **GitHub**: [tejassinghbhati/face-auth](https://github.com/tejassinghbhati/face-auth)
