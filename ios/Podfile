@@ -1,0 +1,40 @@
+require Pod::Executable.execute_command('node', ['-e',
+  "process.stdout.write(require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react_native_pods.rb')",
+]).strip
+
+platform :ios, min_ios_version_supported
+
+prepare_react_native_project!
+
+# TFLite for iOS
+pod 'TensorFlowLiteC', '~> 2.14.0'
+pod 'TensorFlowLiteSwift', '~> 2.14.0'
+
+linkage = ENV['USE_FRAMEWORKS']
+if linkage != nil
+  Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
+  use_frameworks! :linkage => linkage.to_sym
+end
+
+target 'NHAIFaceAuth' do
+  config = use_native_modules!
+
+  use_react_native!(
+    :path => config[:reactNativePath],
+    :hermes_enabled => true,
+    :fabric_enabled => false,
+    :app_path => "#{Pod::Config.instance.installation_root}/.."
+  )
+
+  target 'NHAIFaceAuthTests' do
+    inherit! :complete
+  end
+
+  post_install do |installer|
+    react_native_post_install(
+      installer,
+      config[:reactNativePath],
+      :mac_catalyst_enabled => false,
+    )
+  end
+end

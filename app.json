@@ -1,0 +1,6 @@
+{
+  "name": "NHAIFaceAuth",
+  "displayName": "NHAI Face Auth",
+  "version": "1.0.0",
+  "description": "Offline facial recognition and liveness detection for NHAI field personnel"
+}
